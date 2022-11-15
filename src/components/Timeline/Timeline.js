@@ -1,7 +1,8 @@
+import {StyledTimeline} from './TimelineStyle'
 export default function Timeline(props) {
     const playListNames = Object.keys(props.playlist.playlists)
     return (
-        <div>
+        <StyledTimeline>
             {
 
                 playListNames.map((playListName, indexPlaylistName) => {
@@ -32,6 +33,6 @@ export default function Timeline(props) {
                 }
                 )
             }
-        </div>
+        </StyledTimeline>
     )
 }
