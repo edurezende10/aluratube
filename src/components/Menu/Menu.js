@@ -1,13 +1,13 @@
 import Search from '../Search/Search';
 import { StyledMenu } from './MenuStyle';
 
-export default function Menu() {
+export default function Menu({ setValorDaBusca, valorDaBusca }) {
   return (
     <StyledMenu>
       <div>
         <Logo />
       </div>
-      <Search />
+      <Search setValorDaBusca={setValorDaBusca} valorDaBusca={valorDaBusca} />
     </StyledMenu>
   );
 }

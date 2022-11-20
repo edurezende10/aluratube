@@ -1,24 +1,31 @@
 import { StyledTimeline } from './TimelineStyle';
-export default function Timeline(props) {
-  const playListNames = Object.keys(props.playlist.playlists);
+
+function Timeline({ searchValue, ...propriedades }) {
+  const playlistNames = Object.keys(propriedades.playlists);
+  
   return (
     <StyledTimeline>
-      {playListNames.map((playListName, indexPlaylistName) => {
-        const videos = props.playlist.playlists[playListName];
+      {playlistNames.map((playlistName) => {
+        const videos = propriedades.playlists[playlistName];
+      
         return (
-          <section key={indexPlaylistName}>
-            <h2>{playListName}</h2>
+          <section key={playlistName}>
+            <h2>{playlistName}</h2>
             <div>
-              {videos.filter((video)=>{
-                video.title.includes()
-              }).map((video, indexVideo) => {
-                return (
-                  <a key={indexVideo} href={video.url}>
-                    <img src={video.thumb} />
-                    <span>{video.title}</span>
-                  </a>
-                );
-              })}
+              {videos
+                .filter((video) => {
+                  const titleNormalized = video.title.toLowerCase();
+                  const searchValueNormalized = searchValue.toLowerCase();
+                  return titleNormalized.includes(searchValueNormalized);
+                })
+                .map((video) => {
+                  return (
+                    <a key={video.url} href={video.url}>
+                      <img src={video.thumb} />
+                      <span>{video.title}</span>
+                    </a>
+                  );
+                })}
             </div>
           </section>
         );
@@ -26,3 +33,4 @@ export default function Timeline(props) {
     </StyledTimeline>
   );
 }
+export default Timeline;

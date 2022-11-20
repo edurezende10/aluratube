@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyledSearch } from './SearchStyles';
 
-export default function Search() {
-  const [valorDaBusca, setValorDaBusca] = React.useState('');
+export default function Search({setValorDaBusca,valorDaBusca}) {
+  
   return (
     <StyledSearch>
       <input
